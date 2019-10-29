@@ -1,3 +1,6 @@
 <% provide(:title, "Home")%>
-<h1> Project Seal</h1>
-<p> This is the home page for Project Seal application</p>
+<div class="center jumbotron">
+  <h1>Welcome to the Project Seal App</h1>
+  <h2> This is the home page for Project Seal application</h2>
+  <%= link_to "Sign up now!", new_user_registration_path, class: "btn btn-lg btn-primary" %>
+</div>
