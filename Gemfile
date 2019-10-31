@@ -33,6 +33,8 @@ gem 'bootsnap', '>= 1.4.2', require: false
 # Additional rubygems
 gem 'devise' # for login administration
 gem 'rails-controller-testing'
+gem 'leaflet-rails'
+gem 'ibm_watson'
 
 
 group :development, :test do
