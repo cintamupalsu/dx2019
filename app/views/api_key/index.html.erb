@@ -1,0 +1,32 @@
+<% provide(:title,"API一覧") %>
+<api>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <h1>API一覧</h1>
+    </div>
+  </div>
+  <div class="row right">
+    <div class="col-md-2">
+      <%= link_to "新規API", api_key_new_path, class: "btn btn-info btn-sm" %>
+    </div>
+  </div>
+  <header>
+    <div class="row center">
+      <div class="col-md-1 background-success">
+        <h3>番号</h3>
+      </div>
+      <div class="col-md-6">
+        <h3>APIキー</h3>
+      </div>
+      <div class="col-md-2">
+        <h3>オン・オッフ</h3>
+      </div>
+      <div class="col-md-3">
+        <h3>アクション</h3>
+      </div>
+    </div>
+  </header>
+  <main>
+    <%= render "ichiran" %>
+  </main>
+</api>

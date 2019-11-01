@@ -1,0 +1,29 @@
+<% counter=0 %>
+<% @apis.each do |api| %>
+  <% counter+=1 %>
+  <div class="row center">
+    <div class="col-md-1 background-success">
+      <h4><%= counter %></h4>
+    </div>
+    <div class="col-md-6">
+      <h4><%= api.key %></h4>
+    </div>
+    <div class="col-md-2">
+      <% if api.status==0 %>
+        <h4>オン</h4>
+      <% elsif api.status==1 %>
+        <h4>オッフ</h4>
+      <% end %>
+    </div>
+    <div class="col-md-2">
+      <% if api.status==0 %>
+        <%= link_to "オッフ", api_key_onoff_path(:act => 1, :apikey => api.key), class: "btn btn-warning btn-block" %>
+      <% elsif api.status==1 %>
+        <%= link_to "オン", api_key_onoff_path(:act => 0, :apikey => api.key), class: "btn btn-success btn-block" %>
+      <% end %>
+    </div>
+    <div class="col-md-1">
+      <%= link_to "削除", api_key_onoff_path(:act => 2, :apikey => api.key), class: "btn btn-danger btn-block", data: { confirm: "本当に大丈夫ですか"} %>
+    </div>
+  </div>
+<% end %>

@@ -14,5 +14,7 @@ class LandingPagesController < ApplicationController
   def contact
   end
 
+  def uploadimage
+  end
 
 end
