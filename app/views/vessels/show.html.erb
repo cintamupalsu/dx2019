@@ -1,0 +1,69 @@
+<operation>
+<p id="notice"><%= notice %></p>
+<p>
+  <strong>Name:</strong>
+  <%= @vessel.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @vessel.description %>
+</p>
+
+<p>
+  <strong>作業者:</strong>
+  <%= @vessel.user.username %>
+</p>
+<br />
+<%= link_to '新規機能', add_operation_path(:vessel_id => @vessel.id), class: "btn btn-success" %>
+<header>
+<div class="row center">
+  <div class="col-md-1">
+    <h3>ID</h3>
+  </div>
+  <div class="col-md-2">
+    <h3>Type</h3>
+  </div>
+  <div class="col-md-3">
+    <h3>Note</h3>
+  </div>
+  <div class="col-md-3">
+    <h3>Address</h3>
+  </div>
+  <div class="col-3">
+    <h3>Actions</h3>
+  </div>
+</div>
+</header>
+<main>
+<% counter=0 %>
+<% @vessel.operations.each do |op| %>
+  <% counter+=1 %>
+  <div class="row">
+    <div class="col-md-1">
+      <%= op.id %>
+    </div>
+    <div class="col-md-2">
+      <%= op.kind %>
+    </div>
+    <div class="col-md-3">
+      <%= op.note %>
+    </div>
+    <div class="col-md-3">
+      <%= op.address %>
+    </div>
+    <div class="col-md-1">
+      <% link_to '編集', edit_operation_path(:operation_id => op.id), class:"btn btn-info btn-block" %>
+    </div>
+    <div class="col-md-1">
+      <%= link_to '削除', delete_operation_path(:operation_id => op.id, :vessel_id => @vessel.id), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-warning btn-sm btn-block" %>
+    </div>
+    <div class="col-md-1">
+    </div>
+  </div>
+<% end %>
+</main><br/>
+
+<%= link_to '編集', edit_vessel_path(@vessel), class: "btn btn-info" %>
+<%= link_to '戻る', vessels_path, class: "btn btn-warning" %>
+</operation>

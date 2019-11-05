@@ -1,7 +1,7 @@
-// Place all the styles related to the ApiKey controller here.
+// Place all the styles related to the vessels controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-api {
+vessel {
     header {
       background-color: #ffe082;
       border-radius: 5px 5px 5px 5px;
@@ -14,11 +14,14 @@ api {
       border-radius: 5px 5px 5px 5px;
       padding-top: 5px;
       border: 1px solid #eaeaea;
+      padding-bottom: 5px;
+      padding-left: 5px;
+      padding-right: 5px;
 
     }
 
     #ico_title{
       padding-top: 9px;
-      float:right; 
+      float:right;
     }
 }
