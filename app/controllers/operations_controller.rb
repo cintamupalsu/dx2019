@@ -1,4 +1,6 @@
 class OperationsController < ApplicationController
+  before_action :authenticate_user!
+
   def add
     @operation = Operation.new
     @vessel = Vessel.where("id=?",params[:vessel_id].to_i).first

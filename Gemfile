@@ -5,7 +5,11 @@ ruby '2.6.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.0'
+gem 'active_storage_validations'
 gem 'bootstrap-sass'
+gem 'image_processing'
+gem 'mini_magick'
+gem 'aws-sdk-s3', '1.46.0', require: false
 #gem 'bootstrap'
 # Use sqlite3 as the database for Active Record
 # gem 'sqlite3', '~> 1.4'
@@ -35,6 +39,8 @@ gem 'devise' # for login administration
 gem 'rails-controller-testing'
 gem 'leaflet-rails'
 gem 'ibm_watson'
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
 
 
 group :development, :test do

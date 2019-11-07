@@ -1,0 +1,29 @@
+<%= form_with(model: @report, local: true) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="field">
+    <%= f.text_area :content, placeholder: "Compose new report..." %>
+  </div>
+  <div class="field">
+    <%= f.label :lat %>
+    <%= f.text_field :lat, class: "form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :lon %>
+    <%= f.text_field :lon, class: "form-control" %>
+  </div>
+  <span class="image">
+    <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png" %>
+  </span>
+  <%= f.hidden_field :vessel_id, value: @vessel.id %>
+  <%= f.submit "登録", class: "btn btn-primary" %>
+<% end %>
+
+<script type="text/javascript">
+  $("#report_image").bind("change", function(){
+    var size_in_megabytes = this.files[0].size/1024/1024;
+    if (size_in_megabytes >5){
+      alert("Maximum file size is 5MB. Please choose a smaller file.");
+    }
+    $("#report_image").val("");
+  });
+</script>

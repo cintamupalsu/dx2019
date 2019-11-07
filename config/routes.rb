@@ -10,12 +10,15 @@ Rails.application.routes.draw do
   get '/contact', to: 'landing_pages#contact'
 
   get '/map', to: 'main_map#map'
+  get '/report', to: 'main_map#report'
 
   get '/api_key', to: 'api_key#index'
   get '/api_key_new', to: 'api_key#new'
   get '/api_key_onoff', to: 'api_key#onoffinactivate'
 
   resources :vessels
+  resources :reports, only: [:create, :destroy]
+  get 'report_delete', to:'reports#hapus'
 
   get '/add_operation', to: 'operations#add'
   post '/operations', to: 'operations#create'

@@ -1,0 +1,22 @@
+<% provide(:title, @vessel.name) %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="vessel_info">
+      <h1>
+        <%= image_tag("ico_vessel.png", alt:"ico_title", size:"100x100", id:"ico_title") %>
+        <%= @vessel.name %>
+      </h1>
+    <section class="report_form">
+      <%= render 'reports/report_form' %>
+    </section>
+  </aside>
+  <div class="col-md-8">
+    <% if @vessel.reports.any? %>
+      <h3>Reports(<%= @vessel.reports.count %>)</h3>
+      <ol class="reports">
+        <%= render @reports %>
+      </ol>
+      <%= will_paginate @reports %>
+    <% end %>
+  </div>
+</div>
