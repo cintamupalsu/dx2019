@@ -2,8 +2,10 @@
   <span class="vessel"><%= link_to report.vessel.name, report.vessel %></span>
   <span class="content">
     <%= report.content %>
-    <%= image_tag report.image if report.image.attached? %>
-    <%# image_tag report.display_image if report.image.attached? %>
+    <% if report.image.attached? %>
+      <%= image_tag report.image, :size =>'500x500' %>
+    <% end %>
+
     移動:<%=report.lat%> 軽度:<%=report.lon%>
   </span>
   <span class="timestamps">
