@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   get '/edit_operation', to: 'operations#edit'
   delete '/delete_operation', to: 'operations#delete'
 
-
+  mount ActionCable.server, at: '/cable'
   #get '/users/sign_out', to: 'landing_pages#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

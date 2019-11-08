@@ -6,6 +6,7 @@ class ReportsController < ApplicationController
     @report = vessel.reports.build(report_params)
     @report.image.attach(params[:report][:image])
     if @report.save
+      ActionCable.server.broadcast 'room_channel', content: @report.content, picture: rails_blob_path(@report.image, disposition: "attachment", only_path: true)
       flash[:success] = "Report created!"
     end
     redirect_to report_path(:id => vessel.id)
