@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_06_044452) do
+ActiveRecord::Schema.define(version: 2019_11_13_010421) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -53,6 +53,18 @@ ActiveRecord::Schema.define(version: 2019_11_06_044452) do
     t.index ["vessel_id"], name: "index_operations_on_vessel_id"
   end
 
+  create_table "progresses", force: :cascade do |t|
+    t.integer "status_id", null: false
+    t.text "content"
+    t.integer "report_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["report_id"], name: "index_progresses_on_report_id"
+    t.index ["status_id"], name: "index_progresses_on_status_id"
+    t.index ["user_id"], name: "index_progresses_on_user_id"
+  end
+
   create_table "reports", force: :cascade do |t|
     t.integer "vessel_id", null: false
     t.float "lat"
@@ -60,8 +72,16 @@ ActiveRecord::Schema.define(version: 2019_11_06_044452) do
     t.string "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "json"
     t.index ["vessel_id", "created_at"], name: "index_reports_on_vessel_id_and_created_at"
     t.index ["vessel_id"], name: "index_reports_on_vessel_id"
+  end
+
+  create_table "statuses", force: :cascade do |t|
+    t.integer "shorui"
+    t.string "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -90,6 +110,9 @@ ActiveRecord::Schema.define(version: 2019_11_06_044452) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "apis", "users"
   add_foreign_key "operations", "vessels"
+  add_foreign_key "progresses", "reports"
+  add_foreign_key "progresses", "statuses"
+  add_foreign_key "progresses", "users"
   add_foreign_key "reports", "vessels"
   add_foreign_key "vessels", "users"
 end

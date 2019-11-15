@@ -6,4 +6,5 @@ class User < ApplicationRecord
   validates :username, presence: true
   has_many :apis, dependent: :destroy
   has_many :vessels
+  has_many :progresses
 end

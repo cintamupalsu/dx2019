@@ -7,7 +7,7 @@
         <% if operation.kind == 0 %>
           <%= link_to "#{operation.note}",operation.address, class: "btn btn-success btn-block"%>
         <% else %>
-          <%= link_to "#{operation.note}",operation.address, class: "btn btn-info btn-block"%>
+          <%= link_to "#{operation.note}", iot_image_path(:id => operation.id), class: "btn btn-info btn-block"%>
         <% end %>
       <% end %>
       <%= link_to "報告", report_path(:id => vessel.id), class: "btn btn-warning btn-block"%>

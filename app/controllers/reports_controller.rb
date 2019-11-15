@@ -1,6 +1,10 @@
 class ReportsController < ApplicationController
   before_action :authenticate_user!
 
+  def index
+    @reports = Report.all
+  end
+
   def create
     # IBM Watson Initialization
     apikey = Rails.application.secrets.watson_visual_recognition_api_key
@@ -26,12 +30,12 @@ class ReportsController < ApplicationController
           threshold: "0.6",
           classifier_ids: ["default"]
         )
-        @report.content = classes.result["images"][0]["classifiers"][0]["classes"]
+        @report.json = classes.result["images"][0]["classifiers"][0]["classes"]
       end
     end
 
     if @report.save
-      ActionCable.server.broadcast 'room_channel', content: @report.content, picture: rails_blob_path(@report.image, disposition: "attachment", only_path: true)
+      ActionCable.server.broadcast 'room_channel', content: @report.content,lat: @report.lat, lon: @report.lon, json: @report.json, picture: rails_blob_path(@report.image, disposition: "attachment", only_path: true)
       flash[:success] = "Report created!"
     end
     redirect_to report_path(:id => vessel.id)

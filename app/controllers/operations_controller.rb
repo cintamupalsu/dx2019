@@ -28,6 +28,10 @@ class OperationsController < ApplicationController
     redirect_to vessel_path(@vessel)
   end
 
+  def get_image
+    @operation = Operation.find(params[:id])
+  end
+
   private
   def operation_params
     params.require(:operation).permit(:note, :kind, :address, :vessel_id)

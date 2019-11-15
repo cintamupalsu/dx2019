@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
 
+  get 'progresses/new'
+  get 'progresses/edit'
   devise_for :users
   root 'landing_pages#home'
 
@@ -17,13 +19,16 @@ Rails.application.routes.draw do
   get '/api_key_onoff', to: 'api_key#onoffinactivate'
 
   resources :vessels
-  resources :reports, only: [:create, :destroy]
+  resources :reports, only: [:create, :destroy, :index]
+  resources :progresses, only: [:index, :new, :edit]
+
   get 'report_delete', to:'reports#hapus'
 
   get '/add_operation', to: 'operations#add'
   post '/operations', to: 'operations#create'
   get '/edit_operation', to: 'operations#edit'
   delete '/delete_operation', to: 'operations#delete'
+  get '/iot_image', to: 'operations#get_image'
 
   mount ActionCable.server, at: '/cable'
   #get '/users/sign_out', to: 'landing_pages#home'

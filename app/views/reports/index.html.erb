@@ -1,0 +1,38 @@
+<% provide(:title,"報告一覧") %>
+<div class="row">
+  <div class="col-md-1">
+    番号
+  </div>
+  <div class="col-md-5">
+    メモ
+  </div>
+  <div class="col-md-1">
+    Status
+  </div>
+  <div class="col-md-1">
+    緯度軽度
+  </div>
+</div>
+<% counter=0 %>
+<% @reports.each do |report| %>
+  <div class="row">
+    <div class="col-md-1">
+      <% counter+=1 %>
+      <%= counter %>
+    </div>
+    <div class="col-md-5">
+      <%= report.content %>
+    </div>
+    <div class="col-md-1">
+      <% progress = Progress.where("report_id=? AND status_id=?", report.id,1) %>
+      <% if progress.count > 0  %>
+        Closed
+      <% else %>
+        Open
+      <% end %>
+    </div>
+    <div class="col-md-4">
+      Lat: <%= report.lat %>, Lon: <%= report.lon %>
+    </div>
+  </div>
+<% end %>

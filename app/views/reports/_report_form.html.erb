@@ -5,11 +5,11 @@
   </div>
   <div class="field">
     <%= f.label :lat %>
-    <%= f.text_field :lat, class: "form-control" %>
+    <%= f.text_field :lat, :value =>"34.928994", class: "form-control" %>
   </div>
   <div class="field">
     <%= f.label :lon %>
-    <%= f.text_field :lon, class: "form-control" %>
+    <%= f.text_field :lon, :value =>"138.390166", class: "form-control" %>
   </div>
   <span class="image">
     <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png" %>
