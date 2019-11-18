@@ -19,7 +19,7 @@ consumer.subscriptions.create("RoomChannel", {
       '<div class="message">'+
         '<img width="500" height="500" src='+ data.picture + '>' +
       '</div>' +
-      '<div class="json">'+ data.json + '</div>' +
+      '<div class="jsonstring">'+ data.jsonstring + '</div>' +
       '<div class="row"><div class="col-md-2">緯度:</div><div class="col-md-4">' +
       data.lat +
       '</div><div class="col-md-2">軽度:</div><div class="col-md-4">'+

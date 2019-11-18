@@ -35,7 +35,7 @@ class ReportsController < ApplicationController
     end
 
     if @report.save
-      ActionCable.server.broadcast 'room_channel', content: @report.content,lat: @report.lat, lon: @report.lon, json: @report.json, picture: rails_blob_path(@report.image, disposition: "attachment", only_path: true)
+      ActionCable.server.broadcast 'room_channel', content: @report.content,lat: @report.lat, lon: @report.lon, jsonstring: @report.json, picture: rails_blob_path(@report.image, disposition: "attachment", only_path: true)
       flash[:success] = "Report created!"
     end
     redirect_to report_path(:id => vessel.id)
