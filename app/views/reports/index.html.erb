@@ -1,6 +1,8 @@
 <% provide(:title,"報告一覧") %>
+<vessel>
+<header>
 <div class="row">
-  <div class="col-md-1">
+  <div class="col-md-1 text-center">
     番号
   </div>
   <div class="col-md-5">
@@ -13,10 +15,12 @@
     緯度軽度
   </div>
 </div>
+</header>
 <% counter=0 %>
 <% @reports.each do |report| %>
+  <main>
   <div class="row">
-    <div class="col-md-1">
+    <div class="col-md-1 text-center">
       <% counter+=1 %>
       <%= counter %>
     </div>
@@ -35,4 +39,6 @@
       Lat: <%= report.lat %>, Lon: <%= report.lon %>
     </div>
   </div>
+  </main>
 <% end %>
+</vessel>

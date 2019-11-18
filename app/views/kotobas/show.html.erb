@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Word:</strong>
+  <%= @kotoba.word %>
+</p>
+
+<p>
+  <strong>Message:</strong>
+  <%= @kotoba.message %>
+</p>
+
+<%= link_to '編集', edit_kotoba_path(@kotoba) %> |
+<%= link_to '戻る', kotobas_path %>

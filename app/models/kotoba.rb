@@ -1,0 +1,2 @@
+class Kotoba < ApplicationRecord
+end
