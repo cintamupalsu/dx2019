@@ -15,6 +15,7 @@ class ReportsController < ApplicationController
       version: "2018-03-19",
       authenticator: authenticator
     )
+    kotoba_match = false
     # End Initialization
 
     vessel = Vessel.find(report_params['vessel_id'])
@@ -31,9 +32,19 @@ class ReportsController < ApplicationController
           classifier_ids: ["default"]
         )
         @report.json = classes.result["images"][0]["classifiers"][0]["classes"]
+        kotobas = Kotoba.all
+        classes.result["images"][0]["classifiers"][0]["classes"].each do |cls|
+          kotobas.each do |kotoba|
+            if kotoba_match == false
+              if cls["class"].include? kotoba.word
+                kotoba_match = true
+                @report.content = @report.content+" "+kotoba.message
+              end
+            end
+          end
+        end
       end
     end
-
     if @report.save
       ActionCable.server.broadcast 'room_channel', content: @report.content,lat: @report.lat, lon: @report.lon, jsonstring: @report.json, picture: rails_blob_path(@report.image, disposition: "attachment", only_path: true)
       flash[:success] = "Report created!"

@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get '/help', to: 'landing_pages#help'
   get '/about', to: 'landing_pages#about'
   get '/contact', to: 'landing_pages#contact'
+  get '/uploadimage', to: 'landing_pages#uploadimage'
 
   get '/map', to: 'main_map#map'
   get '/report', to: 'main_map#report'
