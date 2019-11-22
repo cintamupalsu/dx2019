@@ -1,6 +1,7 @@
 class Report < ApplicationRecord
   belongs_to :vessel
   has_many :progresses
+  has_many :taskdets
   has_one_attached :image
   default_scope -> {order(created_at: :desc)}
   validates :vessel_id, presence: true

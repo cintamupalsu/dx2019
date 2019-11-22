@@ -36,7 +36,7 @@ class LandingPagesController < ApplicationController
   def proceedImage(vessel_id, lat, lon)
     vessel = Vessel.find(vessel_id)
     operation = Operation.where("vessel_id = ? AND kind = ?", vessel_id, 1).first
-
+    kotobas = Kotoba.all
     apikey = Rails.application.secrets.watson_visual_recognition_api_key
     authenticator = IBMWatson::Authenticators::IamAuthenticator.new(
       apikey: apikey
@@ -52,7 +52,7 @@ class LandingPagesController < ApplicationController
         file.write(img.read)
       end
     end
-    report = Report.create(lat: lat, lon: lon, content: "Object found", vessel_id: vessel_id)
+    report = Report.create(lat: lat, lon: lon, vessel_id: vessel_id)
 
 
     File.open("./public/temp/t.jpg") do |file|
@@ -63,6 +63,16 @@ class LandingPagesController < ApplicationController
         )
         report.image.attach(io: File.open(file.path),filename: 't.jpg')
         result = classes.result["images"][0]["classifiers"][0]["classes"]
+        classes.result["images"][0]["classifiers"][0]["classes"].each do |cls|
+          kotobas.each do |kotoba|
+            if kotoba_match == false
+              if cls["class"].include? kotoba.word
+                kotoba_match = true
+                report.content = kotoba.message
+              end
+            end
+          end
+        end
         report.json = result.to_s
         if report.save
           ActionCable.server.broadcast 'room_channel', content: report.content,lat: report.lat, lon: report.lon, jsonstring: report.json, picture: rails_blob_path(report.image, disposition: "attachment", only_path: true)

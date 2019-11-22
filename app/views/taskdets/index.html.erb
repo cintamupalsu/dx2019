@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Taskdets</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Content</th>
+      <th>Status</th>
+      <th>User</th>
+      <th>Report</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @taskdets.each do |taskdet| %>
+      <tr>
+        <td><%= taskdet.content %></td>
+        <td><%= taskdet.status %></td>
+        <td><%= taskdet.user_id %></td>
+        <td><%= taskdet.report_id %></td>
+        <td><%= link_to 'Show', taskdet %></td>
+        <td><%= link_to 'Edit', edit_taskdet_path(taskdet) %></td>
+        <td><%= link_to 'Destroy', taskdet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Taskdet', new_taskdet_path %>

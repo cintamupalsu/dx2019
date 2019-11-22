@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_18_041717) do
+ActiveRecord::Schema.define(version: 2019_11_22_005935) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 2019_11_18_041717) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["report_id"], name: "index_progresses_on_report_id"
+    t.index ["status_id", "created_at"], name: "index_progresses_on_status_id_and_created_at"
     t.index ["status_id"], name: "index_progresses_on_status_id"
     t.index ["user_id"], name: "index_progresses_on_user_id"
   end
@@ -89,6 +90,17 @@ ActiveRecord::Schema.define(version: 2019_11_18_041717) do
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "taskdets", force: :cascade do |t|
+    t.text "content"
+    t.integer "status"
+    t.integer "user_id", null: false
+    t.integer "report_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["report_id"], name: "index_taskdets_on_report_id"
+    t.index ["user_id"], name: "index_taskdets_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -121,5 +133,7 @@ ActiveRecord::Schema.define(version: 2019_11_18_041717) do
   add_foreign_key "progresses", "statuses"
   add_foreign_key "progresses", "users"
   add_foreign_key "reports", "vessels"
+  add_foreign_key "taskdets", "reports"
+  add_foreign_key "taskdets", "users"
   add_foreign_key "vessels", "users"
 end

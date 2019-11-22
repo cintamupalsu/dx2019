@@ -5,14 +5,14 @@
   <div class="col-md-1 text-center">
     番号
   </div>
-  <div class="col-md-5">
+  <div class="col-md-7">
     メモ
+  </div>
+  <div class="col-md-3 text-center">
+    緯度軽度
   </div>
   <div class="col-md-1">
     Status
-  </div>
-  <div class="col-md-1">
-    緯度軽度
   </div>
 </div>
 </header>
@@ -24,21 +24,54 @@
       <% counter+=1 %>
       <%= counter %>
     </div>
-    <div class="col-md-5">
+    <div class="col-md-7">
+      <button class="btn btn-primary" data-toggle="collapse" data-target="#collapse<%=report.id%>" role="button" aria-expanded="false" aria-controls="collapseExample">
+        詳細
+      </button>
       <%= report.content %>
     </div>
+    <div class="col-md-3">
+      Lat: <%= report.lat %>, Lon: <%= report.lon %>
+    </div>
     <div class="col-md-1">
-      <% progress = Progress.where("report_id=? AND status_id=?", report.id,1) %>
+      <% progress = Taskdet.where("report_id=? AND status=?", report.id,1) %>
       <% if progress.count > 0  %>
         Closed
       <% else %>
         Open
       <% end %>
     </div>
-    <div class="col-md-4">
-      Lat: <%= report.lat %>, Lon: <%= report.lon %>
+  </div>
+
+  <div class="collapse" id="collapse<%=report.id%>">
+    <% report.taskdets.each do |taskdet| %>
+      <div class="row">
+        <div class="col-md-1 text-right">
+          <%= taskdet.created_at.strftime('%H:%M') %>
+        </div>
+        <div class="col-md-7">
+          <div class="card card-body">
+            <%= taskdet.content %>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <%= link_to '編集', edit_taskdet_path(taskdet), class:'btn btn-info' %>
+          <%= link_to '削除', taskdet, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-warning" %>
+        </div>
+        <div class="col-md-1">
+        </div>
+      </div>
+    <% end %>
+    <div class="row">
+      <div class="col-md-1">
+
+      </div>
+      <div class="col-md-7">
+        <%= link_to "追加", new_taskdet_path(:report_id => report.id), class:"btn btn-success" %>
+      </div>
     </div>
   </div>
+
   </main>
 <% end %>
 </vessel>

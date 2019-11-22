@@ -10,7 +10,7 @@
 #define ECHO_PIN 11
 #define GPSECHO true
 
-Servo frontServo; 
+Servo frontServo;
 Servo steerServo;
 
 int pos01 = 90; // front servo position
@@ -38,7 +38,7 @@ float longitude = 0;
 // Ethernet
 byte mac[] = { 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA };
 const char* key = "APIKEY";
-const char* host = "https://shielded-reef-91069.herokuapp.com/";
+const char* host = "https://server-address/";
 const int httpPort = 80;
 EthernetClient client;
 // ----
@@ -58,22 +58,22 @@ void setup() {
 
   //pinMode(front_servoVCCPin, OUTPUT);
   //digitalWrite(front_servoVCCPin, HIGH);
-  
+
   pinMode(sensorVCCPin, OUTPUT);
   digitalWrite(sensorVCCPin, HIGH);
-  
+
   pinMode(gpsVCCPin, OUTPUT);
   digitalWrite(gpsVCCPin, HIGH);
-  
+
   delay(1000);
 
   Serial.begin(115200);
 
   // Activate Servos
-  frontServo.attach(frontCtrl); 
-  steerServo.attach(steerCtrl); 
-  
-  frontServo.write(pos01);  
+  frontServo.attach(frontCtrl);
+  steerServo.attach(steerCtrl);
+
+  frontServo.write(pos01);
   steerServo.write(pos02);
 
   // GPS Setting
@@ -84,7 +84,7 @@ void setup() {
 
   delay(1000);
   softSerial.println(PMTK_Q_RELEASE);
-  
+
   steerServo.detach();
   destLat[0] = 34.929290;
   destLon[0] = 138.389763;
@@ -100,14 +100,14 @@ void loop() {
   if (posMode == true){
     pos01 = pos01 + 5;
     if (pos01 == 135) {
-      posMode = false;    
+      posMode = false;
     }
   } else {
     pos01 = pos01 - 5;
     if (pos01 == 45) {
       posMode = true;
     }
-  }  
+  }
 
   frontServo.write(pos01);
   delay(100); // Provide time for servo move to given position
@@ -116,7 +116,7 @@ void loop() {
   char gpsChar = GPS.read();
   if ((gpsChar) & (GPSECHO))
     Serial.write(gpsChar);
-  
+
   if (GPS.newNMEAreceived()){
     if(!GPS.parse(GPS.lastNMEA()))
       return;
@@ -129,7 +129,7 @@ void loop() {
     timer = millis(); // reset the timer
     if (GPS.fix){ // if received clear signal from GPS
       latitude = GPS.lat - destLat[0];
-      longitude = GPS.lon - destLon[0]; 
+      longitude = GPS.lon - destLon[0];
       float ta = turningangle(GPS.angle,calcangle(latitude,longitude));
       if (ta<0){
         port=millis()+(ta*constantaCircle*1000);
@@ -182,12 +182,12 @@ void loop() {
     }
     sendToServer(latitude,longitude);
   }
-  
+
   // for easy read on testing
   if (pos01 == 45){
     Serial.println();
   }
-  
+
 }
 
 static float degree2rad(float alpha){

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+  resources :taskdets
   resources :kotobas
   get 'progresses/new'
   get 'progresses/edit'

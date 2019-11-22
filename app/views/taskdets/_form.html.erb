@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="col col-md-6 col-md-offset-3">
+    <%= form_with(model: taskdet, local: true) do |form| %>
+      <% if taskdet.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(taskdet.errors.count, "error") %> prohibited this taskdet from being saved:</h2>
+
+          <ul>
+            <% taskdet.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="field">
+        <%= form.label :content %>
+        <%= form.text_area :content %>
+      </div>
+
+      <div class="field">
+        <%= form.label :status %>
+        <% @optional = [{id: 0, name:'open'}, {id: 1,name: 'close'}] %>
+        <%= form.select :status, options_for_select(@optional.map{|c|[c[:name], c[:id]]}, taskdet.status), {}, class: "form-controls" %>
+      </div>
+
+
+      <%= form.hidden_field :user_id, value: current_user.id %>
+      <% if @report_id != nil %>
+        <%= form.hidden_field :report_id, value: @report_id %>
+      <% else %>
+        <%= form.hidden_field :report_id %>
+      <% end %>
+
+      <div class="actions">
+        <%= form.submit %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @taskdet.content %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <% if @taskdet.status == 0 %>
+    Open
+  <% else %>
+    Closed
+  <% end %>
+
+</p>
+
+
+<%= link_to 'Edit', edit_taskdet_path(@taskdet) %> |
+<%= link_to 'Back', reports_path %>
