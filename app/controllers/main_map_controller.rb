@@ -3,6 +3,7 @@ class MainMapController < ApplicationController
 
   def map
     @vessels = Vessel.all
+    @reports = Report.all
   end
 
   def report
