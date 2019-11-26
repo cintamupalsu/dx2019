@@ -54,8 +54,9 @@ fot the ship device, you will need this some hardware
 ## Building the ship
 
 Print all STL files located in public/stl using 3D printer.
-Place the hardware (Arduino, Servo motors, etc) into the ship and connect them.
-as instructed as seen on diagram in folder public/diagram.
+Place the hardware (Arduino, Servo motors, etc.) into the ship and connect them.
+See the diagram in the folder public/diagram to connect the parts.
 Copy the file code in folder public/micro to Arduino Cam and ESP8622.
 Register the IoT into the system.
 For details please check this video:
+https://youtu.be/dswm9GnVguY
