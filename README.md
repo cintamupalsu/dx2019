@@ -33,3 +33,29 @@ $ rails server
 ```
 
 For more information, please contact a_maulana at sbs-infosys.co.jp
+
+## IoT
+
+fot the ship device, you will need this some hardware
+
+# Hardware
+
+1. Arduinos & Cam
+2. Servo motors
+3. Power supply module
+4. DC Motor
+5. Ultrasonic Sensor
+6. Female-to-male Dupont wire
+7. 830 Tie-Points Breadboard
+8. Jumper Wire
+9. 3D Printer
+10. Solar panel battery.
+
+## Building the ship
+
+Print all STL files located in public/stl using 3D printer.
+Place the hardware (Arduino, Servo motors, etc) into the ship and connect them.
+as instructed as seen on diagram in folder public/diagram.
+Copy the file code in folder public/micro to Arduino Cam and ESP8622.
+Register the IoT into the system.
+For details please check this video:
