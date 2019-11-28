@@ -34,11 +34,16 @@ $ rails server
 
 For more information, please contact a_maulana at sbs-infosys.co.jp
 
+## Environment variable
+
+WVRAK = <Watson Visual Recognition API Key>
+
 ## IoT
 
-fot the ship device, you will need this some hardware
+for the ship device, you will need this some hardware
 
-# Hardware
+
+## Hardware
 
 1. Arduinos & Cam
 2. Servo motors
@@ -59,4 +64,4 @@ See the diagram in the folder public/diagram to connect the parts.
 Copy the file code in folder public/micro to Arduino Cam and ESP8622.
 Register the IoT into the system.
 For details please check this video:
-https://youtu.be/dswm9GnVguY
+https://youtu.be/xs40dX0Q5jw
