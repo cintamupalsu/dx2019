@@ -75,7 +75,7 @@ See the diagram in the folder
 public/diagram/DX2019Architecture.pdf
 ```
 to connect the parts.
-Copy the file code in folder
+Then copy the file code in folder
 ```
 public/micro
 ```
