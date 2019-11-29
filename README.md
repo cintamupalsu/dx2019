@@ -20,7 +20,7 @@ Next, migrate the database:
 $ rails db:migrate
 ```
 
-Finally, run the test suite to veryfy that everything is working correctly:
+Finally, run the test suite to verify that everything is working correctly:
 
 ```
 $ rails test
@@ -38,7 +38,13 @@ For more information, please contact a_maulana at sbs-infosys.co.jp
 
 WVRAK = <Watson Visual Recognition API Key>
 
-## IoT
+# Architecture
+Please see
+```
+public/diagram/DX2019Architecture.pdf
+```
+
+# IoT
 
 for the ship device, you will need this some hardware
 
@@ -58,10 +64,22 @@ for the ship device, you will need this some hardware
 
 ## Building the ship
 
-Print all STL files located in public/stl using 3D printer.
+Print all STL files located in folder
+```
+public/stl
+```
+using 3D printer.
 Place the hardware (Arduino, Servo motors, etc.) into the ship and connect them.
-See the diagram in the folder public/diagram to connect the parts.
-Copy the file code in folder public/micro to Arduino Cam and ESP8622.
+See the diagram in the folder
+```
+public/diagram/DX2019Architecture.pdf
+```
+to connect the parts.
+Copy the file code in folder
+```
+public/micro
+```
+and upload to  ESP8266.
 Register the IoT into the system.
 For details please check this video:
-https://youtu.be/xs40dX0Q5jw
+https://youtu.be/LTkDhwy6I6U
