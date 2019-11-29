@@ -36,7 +36,7 @@ For more information, please contact a_maulana at sbs-infosys.co.jp
 
 ## Environment variable
 
-WVRAK = <Watson Visual Recognition API Key>
+WVRAK = Watson Visual Recognition API Key
 
 # Architecture
 Please see
