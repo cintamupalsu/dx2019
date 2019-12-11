@@ -73,7 +73,7 @@ Place the hardware (Arduino, Servo motors, etc.) into the ship and connect them.
 See the diagram in the folder
 [public/diagram/DX2019Architecture.pdf](public/diagram/DX2019Architecture.pdf)
 IBM DX Template:
-[public/diagram/DX Challenge 2019 二次選考.pdf](public/diagram/DX Challenge 2019 二次選考.pdf)
+[public/diagram/DXChallenge.pdf](public/diagram/DXChalleng.pdf)
 to connect the parts.
 Then copy the file code in folder
 ```
