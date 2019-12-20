@@ -41,7 +41,8 @@ WVRAK = Watson Visual Recognition API Key
 # Architecture
 Please see
 
-[public/diagram/DX2019Architecture.pdf](public/diagram/DX2019Architecture.pdf)
+[public/diagram/DX2019Architecture.pdf](public/diagram/DX2019Architecture.pdf) or for power distribution diagram please follow this link https://youtu.be/c2IkSm44o9g
+
 
 
 # IoT
