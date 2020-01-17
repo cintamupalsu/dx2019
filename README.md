@@ -62,10 +62,12 @@ for the ship device, you will need this some hardware
 8. Jumper Wire
 9. 3D Printer
 10. Solar panel battery.
+11. Solar panel (for more power)
 
 ## Building the ship
 
 Print all STL files located in folder
+For Version 2.0 Ship Model please look at the folder [public/diagram/stl/ShipV2/](public/stl/ShipV2/) for ship hull
 ```
 public/stl
 ```
@@ -73,6 +75,7 @@ using 3D printer.
 Place the hardware (Arduino, Servo motors, etc.) into the ship and connect them.
 See the diagram in the folder
 [public/diagram/DX2019Architecture.pdf](public/diagram/DX2019Architecture.pdf)
+I upgrade the ship by adding more solar panel and re-draw the circuit diagram [public/diagram/CircuitDiagram.png](public/diagram/CircuitDiagram.png)
 IBM DX Template:
 [public/diagram/DXChallenge.pdf](public/diagram/DXChallenge.pdf)
 to connect the parts.
