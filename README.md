@@ -75,7 +75,7 @@ using 3D printer.
 Place the hardware (Arduino, Servo motors, etc.) into the ship and connect them.
 See the diagram in the folder
 [public/diagram/DX2019Architecture.pdf](public/diagram/DX2019Architecture.pdf)
-I upgrade the ship by adding more solar panel and re-draw the circuit diagram [public/diagram/CircuitDiagram.png](public/diagram/CircuitDiagram.png)
+For Version 2.0 by adding more solar panel please follow this circuit diagram [public/diagram/CircuitDiagram.png](public/diagram/CircuitDiagram.png)
 IBM DX Template:
 [public/diagram/DXChallenge.pdf](public/diagram/DXChallenge.pdf)
 to connect the parts.
